@@ -5,6 +5,9 @@ import androidx.room.RoomDatabase;
 
 import hr.foi.air.database.entities.*;
 
-@Database(version=1, entities = {User.class}, views = {}, exportSchema = false)
+@Database(version=1,
+        entities = {User.class, Sport.class},
+        views = {},
+        exportSchema = false)
 public abstract class SportDatabase extends RoomDatabase {
 }
