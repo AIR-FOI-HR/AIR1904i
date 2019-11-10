@@ -36,6 +36,44 @@ public class User {
     String activationCode;
     @ColumnInfo(name="profile_img")
     Bitmap profileImg;
+    @ColumnInfo(name="address")
+    String address;
+    @ColumnInfo(name="longitude")
+    Double longitude;
+    @ColumnInfo(name="latitude")
+    Double latitude;
+
+    public Bitmap getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(Bitmap profileImg) {
+        this.profileImg = profileImg;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
 
     public int getId() {
         return id;
@@ -49,9 +87,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
     public String getPhoneNumber() {
         return phoneNumber;
