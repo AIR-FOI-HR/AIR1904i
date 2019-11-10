@@ -9,9 +9,9 @@ import java.util.Date;
 
 import hr.foi.air.database.converters.DateConverter;
 
-@Entity(tableName = "participants", primaryKeys = {"player_id", "event_id"})
+@Entity(tableName = "participations", primaryKeys = {"player_id", "event_id"})
 @TypeConverters(DateConverter.class)
-public class Participant {
+public class Participation {
     @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "player_id")
     @ColumnInfo(index = true, name = "player_id")
     int playerId;
