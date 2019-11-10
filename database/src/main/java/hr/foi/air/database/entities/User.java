@@ -1,5 +1,7 @@
 package hr.foi.air.database.entities;
 
+import android.graphics.Bitmap;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,10 +9,11 @@ import androidx.room.TypeConverters;
 
 import java.util.Date;
 
+import hr.foi.air.database.converters.BitmapConverter;
 import hr.foi.air.database.converters.DateConverter;
 
 @Entity(tableName = "users")
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, BitmapConverter.class})
 public class User {
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -31,6 +34,8 @@ public class User {
     Date registerDate;
     @ColumnInfo(name="activation_code")
     String activationCode;
+    @ColumnInfo(name="profile_img")
+    Bitmap profileImg;
 
     public int getId() {
         return id;
