@@ -13,4 +13,20 @@ public class EventApplication {
     @ForeignKey(entity = Event.class, parentColumns = "id", childColumns = "event_id")
     @ColumnInfo(index = true, name = "event_id")
     int eventId;
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
 }
