@@ -51,7 +51,6 @@ class ApplicationDaoImpl implements ApplicationDao {
     }
 
     public function getApplicationsByEvent($eventId) {
-        if (!($eventId instanceof int)) { return null; }
         
         $sql = "SELECT * FROM applications WHERE event_id=:eventId";
         
@@ -72,7 +71,6 @@ class ApplicationDaoImpl implements ApplicationDao {
     }
 
     public function getApplicationsByPlayer($playerId) {
-        if (!($playerId instanceof int)) { return null; }
         
         $sql = "SELECT * FROM applications WHERE player_id=:playerId";
         

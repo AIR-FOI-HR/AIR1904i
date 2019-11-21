@@ -49,7 +49,6 @@ class UserDaoImpl implements UserDao {
     }
 
     public function getUserByEmail($email) {
-        if (!($email instanceof string)) { return null; }
         
         $sql = "SELECT * FROM users WHERE email=:email";
         
@@ -57,12 +56,13 @@ class UserDaoImpl implements UserDao {
         $conn = $db->getConnection();
         $stmt = $conn->prepare($sql);
         
-        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':email', $eMail);
+        $eMail = $email;
         
         $stmt->execute();
         
-        $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-        $result = $stmt->fetchOne();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch();
         
         $db->closeConnection();
         
@@ -70,7 +70,6 @@ class UserDaoImpl implements UserDao {
     }
 
     public function getUserById($userId) {
-        if (!($userId instanceof int)) { return null; }
         
         $sql = "SELECT * FROM users WHERE id=:userId";
         
@@ -82,8 +81,8 @@ class UserDaoImpl implements UserDao {
         
         $stmt->execute();
         
-        $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-        $result = $stmt->fetchOne();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch();
         
         $db->closeConnection();
         
@@ -91,7 +90,6 @@ class UserDaoImpl implements UserDao {
     }
 
     public function getUserByUsername($username) {
-        if (!($username instanceof string)) { return null; }
         
         $sql = "SELECT * FROM users WHERE username=:username";
         
@@ -104,7 +102,7 @@ class UserDaoImpl implements UserDao {
         $stmt->execute();
         
         $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetch();
         
         $db->closeConnection();
         
