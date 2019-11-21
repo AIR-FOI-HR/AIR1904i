@@ -5,3 +5,6 @@ nbdist/
 .nb-gradle/
 nbproject/
 .database.ini
+
+# testing files
+test.php
