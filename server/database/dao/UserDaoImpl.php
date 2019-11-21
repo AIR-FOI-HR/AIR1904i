@@ -56,8 +56,7 @@ class UserDaoImpl implements UserDao {
         $conn = $db->getConnection();
         $stmt = $conn->prepare($sql);
         
-        $stmt->bindParam(':email', $eMail);
-        $eMail = $email;
+        $stmt->bindParam(':email', $email);
         
         $stmt->execute();
         
