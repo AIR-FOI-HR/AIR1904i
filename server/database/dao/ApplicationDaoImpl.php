@@ -6,7 +6,7 @@ require_once './Database.php';
 class ApplicationDaoImpl implements ApplicationDao {
     
     public function deleteApplications($applications) {
-        if (is_null($applications)) { return -1; }
+        if (is_null($applications)) { return; }
         
         $sql = "DELETE FROM applications WHERE event_id=:eventId AND player_id=:playerId";
         
@@ -126,7 +126,7 @@ class ApplicationDaoImpl implements ApplicationDao {
     }
 
     public function updateApplications($applications) {
-        if (is_null($applications)) { return -1; }
+        if (is_null($applications)) { return; }
         
         $sql = "UPDATE applications"
                 . "SET event_id=:eventId, player_id=:playerId "

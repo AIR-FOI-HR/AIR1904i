@@ -6,7 +6,7 @@ require_once './Database.php';
 class UserDaoImpl implements UserDao {
     
     public function deleteUsers($users) {
-        if (is_null($users)) { return -1; }
+        if (is_null($users)) { return; }
         
         $sql = "DELETE FROM users WHERE id=:id";
         
@@ -194,7 +194,7 @@ class UserDaoImpl implements UserDao {
     }
 
     public function updateUsers($users) {
-        if (is_null($users)) { return -1; }
+        if (is_null($users)) { return; }
         
         $sql = "UPDATE users SET "
                 . "email=:email, "
@@ -236,7 +236,7 @@ class UserDaoImpl implements UserDao {
             
             if (!($u instanceof User)) { 
                 $db->closeConnection();
-                return -1; 
+                return; 
             }
             
             $id = $u->getId();
