@@ -49,7 +49,7 @@ class SportDaoImpl implements SportDao {
     }
 
     public function getSportById($sportId) {
-        $sql = "SELECT * FROM sports WHERE id=:userId";
+        $sql = "SELECT * FROM sports WHERE id=:sportId";
         
         $db = Database::getInstance();
         $conn = $db->getConnection();
