@@ -92,7 +92,9 @@ class ApplicationDaoImpl implements ApplicationDao {
     }
 
     public function insertApplications($applications) {
-        if (is_null($applications)) { return -1; }
+        $ids = [];
+        
+        if (is_null($applications)) { return $ids; }
         
         $sql = "INSERT INTO applications(player_id, event_id) VALUES (:playerId, :eventId)";
         
@@ -103,13 +105,11 @@ class ApplicationDaoImpl implements ApplicationDao {
         $stmt->bindParam(':playerId', $playerId);
         $stmt->bindParam(':eventId', $eventId);
         
-        $ids = [];
-        
         foreach ($applications as $a) {
             
             if (!($a instanceof Application)) { 
                 $db->closeConnection();
-                return -1; 
+                return $ids; 
             }
             
             $playerId = $a->getPlayerId();

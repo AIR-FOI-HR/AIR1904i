@@ -68,7 +68,9 @@ class SportDaoImpl implements SportDao {
     }
 
     public function insertSports($sports) {
-        if (is_null($sports)) { return -1; }
+        $ids = [];
+        
+        if (is_null($sports)) { return $ids; }
         
         $sql = "INSERT INTO sports("
                 . "name, "
@@ -91,13 +93,11 @@ class SportDaoImpl implements SportDao {
         $stmt->bindParam(':minPlayers', $minPlayers);
         $stmt->bindParam(':maxPlayers', $maxPlayers);
         
-        $ids = [];
-        
         foreach ($sports as $s) {
             
             if (!($s instanceof Sport)) { 
                 $db->closeConnection();
-                return -1; 
+                return $ids; 
             }
             
             $name = $s->getName();

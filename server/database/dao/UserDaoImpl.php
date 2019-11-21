@@ -109,7 +109,9 @@ class UserDaoImpl implements UserDao {
     }
 
     public function insertUsers($users) {
-        if (is_null($users)) { return -1; }
+        $ids = [];
+        
+        if (is_null($users)) { return $ids; }
         
         $sql = "INSERT INTO users("
                 . "email, "
@@ -159,13 +161,11 @@ class UserDaoImpl implements UserDao {
         $stmt->bindParam(':longitude', $longitude);
         $stmt->bindParam(':latitude', $latitude);
         
-        $ids = [];
-        
         foreach ($users as $u) {
             
             if (!($u instanceof User)) { 
                 $db->closeConnection();
-                return -1; 
+                return $ids; 
             }
             
             $email = $u->getEmail();
