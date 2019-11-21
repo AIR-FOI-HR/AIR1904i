@@ -1,9 +1,12 @@
 <?php
 
+require_once './interfaces/UserDao.php';
+require_once './Database.php';
+
 class UserDaoImpl implements UserDao {
     
     public function deleteUsers($users) {
-        if (is_null($applications)) { return -1; }
+        if (is_null($users)) { return -1; }
         
         $sql = "DELETE FROM users WHERE id=:id";
         
@@ -25,7 +28,7 @@ class UserDaoImpl implements UserDao {
             $stmt->execute();
         }
         
-        $db->closeConnection();        
+        $db->closeConnection();    
     }
 
     public function getAllUsers() {
@@ -207,7 +210,7 @@ class UserDaoImpl implements UserDao {
                 . "address=:address, "
                 . "longitude=:longitude, "
                 . "latitude=:latitude"
-                . ") WHERE id=:id";
+                . " WHERE id=:id";
         
         $db = Database::getInstance();
         $conn = $db->getConnection();

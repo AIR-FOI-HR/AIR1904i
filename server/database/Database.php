@@ -4,10 +4,10 @@ class Database {
     private static $INSTANCE = null;
     
     public static function getInstance() {
-        if (DbConn::$INSTANCE == null) {
-            DbConn::$INSTANCE = new DbConn();
+        if (Database::$INSTANCE == null) {
+            Database::$INSTANCE = new Database();
         }
-        return DbConn::$INSTANCE;
+        return Database::$INSTANCE;
     }
     
     private $dbName;
@@ -19,7 +19,7 @@ class Database {
     private $conn;
     
     private function Database() {
-        $dbSettings = parse_ini_file(".database.ini", true);
+        $dbSettings = parse_ini_file(".database.ini");
         $this->dbName = $dbSettings["dbname"];
         $this->dbDriver = $dbSettings["driver"];
         $this->username = $dbSettings["user"];

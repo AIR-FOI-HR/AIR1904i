@@ -1,5 +1,8 @@
 <?php
 
+require_once './interfaces/ApplicationDao.php';
+require_once './Database.php';
+
 class ApplicationDaoImpl implements ApplicationDao {
     
     public function deleteApplications($applications) {
