@@ -3,7 +3,7 @@
 class Sport {
     private $id;
     private $name;
-    private $desctiption;
+    private $description;
     private $minPlayers;
     private $maxPlayers;
     
@@ -15,8 +15,8 @@ class Sport {
         return $this->name;
     }
 
-    public function getDesctiption() {
-        return $this->desctiption;
+    public function getDescription() {
+        return $this->description;
     }
 
     public function getMinPlayers() {
@@ -35,8 +35,8 @@ class Sport {
         $this->name = $name;
     }
 
-    public function setDesctiption($desctiption): void {
-        $this->desctiption = $desctiption;
+    public function setDescription($description): void {
+        $this->description = $description;
     }
 
     public function setMinPlayers($minPlayers): void {
