@@ -6,4 +6,6 @@ interface EventDao {
     public function updateEvents($events);
     public function getAllEvents();
     public function getEventById($eventId);
+    public function getEventsByCreator($creatorId);
+    public function getEventsBySport($sportId);
 }
