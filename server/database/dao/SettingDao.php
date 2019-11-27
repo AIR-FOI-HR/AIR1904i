@@ -1,7 +1,7 @@
 <?php
 
-require_once './interfaces/ISettingDao.php';
-require_once './Database.php';
+require_once __DIR__.'/../interfaces/ISettingDao.php';
+require_once __DIR__.'/../Database.php';
 
 class SettingDao implements ISettingDao {
     

@@ -1,7 +1,7 @@
 <?php
 
-require_once './interfaces/ISportDao.php';
-require_once './Database.php';
+require_once __DIR__.'/../interfaces/ISportDao.php';
+require_once __DIR__.'/../Database.php';
 
 class SportDao implements ISportDao {
     

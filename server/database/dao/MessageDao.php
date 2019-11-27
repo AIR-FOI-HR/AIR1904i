@@ -1,7 +1,7 @@
 <?php
 
-require_once './interfaces/IMessageDao.php';
-require_once './Database.php';
+require_once __DIR__.'/../interfaces/IMessageDao.php';
+require_once __DIR__.'/../Database.php';
 
 class MessageDao implements IMessageDao {
     

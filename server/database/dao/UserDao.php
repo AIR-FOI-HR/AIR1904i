@@ -1,7 +1,7 @@
 <?php
 
-require_once './interfaces/IUserDao.php';
-require_once './Database.php';
+require_once __DIR__.'/../interfaces/IUserDao.php';
+require_once __DIR__.'/../Database.php';
 
 class UserDao implements IUserDao {
     

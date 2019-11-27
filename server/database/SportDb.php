@@ -1,13 +1,13 @@
 <?php
 
-require_once 'dao/ApplicationDao.php';
-require_once 'dao/ChatDao.php';
-require_once 'dao/EventDao.php';
-require_once 'dao/MessageDao.php';
-require_once 'dao/ParticipationDao.php';
-require_once 'dao/SettingDao.php';
-require_once 'dao/SportDao.php';
-require_once 'dao/UserDao.php';
+require_once __DIR__.'/dao/ApplicationDao.php';
+require_once __DIR__.'/dao/ChatDao.php';
+require_once __DIR__.'/dao/EventDao.php';
+require_once __DIR__.'/dao/MessageDao.php';
+require_once __DIR__.'/dao/ParticipationDao.php';
+require_once __DIR__.'/dao/SettingDao.php';
+require_once __DIR__.'/dao/SportDao.php';
+require_once __DIR__.'/dao/UserDao.php';
 
 class SportDb {
     private static $INSTANCE = null;

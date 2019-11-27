@@ -1,7 +1,7 @@
 <?php
 
-require_once './interfaces/IChatDao.php';
-require_once './Database.php';
+require_once __DIR__.'/../interfaces/IChatDao.php';
+require_once __DIR__.'/../Database.php';
 
 class ChatDao implements IChatDao {
     
