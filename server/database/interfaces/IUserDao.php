@@ -1,6 +1,6 @@
 <?php
 
-interface UserDao {
+interface IUserDao {
     public function insertUsers($users);
     public function deleteUsers($users);
     public function updateUsers($users);

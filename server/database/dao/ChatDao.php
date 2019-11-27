@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/ChatDao.php';
+require_once './interfaces/IChatDao.php';
 require_once './Database.php';
 
-class ChatDaoImpl implements ChatDao {
+class ChatDao implements IChatDao {
     
     public function deleteChats($chats) {
         if (is_null($chats)) { return; }

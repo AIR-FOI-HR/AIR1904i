@@ -1,6 +1,6 @@
 <?php
 
-interface SportDao {
+interface ISportDao {
     public function insertSports($sports);
     public function deleteSports($sports);
     public function updateSports($sports);

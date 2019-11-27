@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/MessageDao.php';
+require_once './interfaces/IMessageDao.php';
 require_once './Database.php';
 
-class MessageDaoImpl implements MessageDao {
+class MessageDao implements IMessageDao {
     
     public function deleteMessages($messages) {
         if (is_null($messages)) { return; }

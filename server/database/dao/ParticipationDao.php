@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/ParticipationDao.php';
+require_once './interfaces/IParticipationDao.php';
 require_once './Database.php';
 
-class ParticipationDaoImpl implements ParticipationDao {
+class ParticipationDao implements IParticipationDao {
     
     public function deleteParticipations($participations) {
         if (is_null($participations)) { return; }

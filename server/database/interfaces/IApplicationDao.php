@@ -1,6 +1,6 @@
 <?php
 
-interface ApplicationDao {
+interface IApplicationDao {
     public function insertApplications($applications);
     public function deleteApplications($applications);
     public function updateApplications($applications);

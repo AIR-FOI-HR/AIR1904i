@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/SettingDao.php';
+require_once './interfaces/ISettingDao.php';
 require_once './Database.php';
 
-class SettingDaoImpl implements SettingDao {
+class SettingDao implements ISettingDao {
     
     public function deleteSettings($settings) {
         if (is_null($sports)) { return; }

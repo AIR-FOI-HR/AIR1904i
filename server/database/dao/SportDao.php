@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/SportDao.php';
+require_once './interfaces/ISportDao.php';
 require_once './Database.php';
 
-class SportDaoImpl implements SportDao {
+class SportDao implements ISportDao {
     
     public function deleteSports($sports) {
         if (is_null($sports)) { return; }

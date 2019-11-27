@@ -1,6 +1,6 @@
 <?php
 
-interface EventDao {
+interface IEventDao {
     public function insertEvents($events);
     public function deleteEvents($events);
     public function updateEvents($events);

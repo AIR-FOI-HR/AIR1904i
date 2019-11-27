@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/EventDao.php';
+require_once './interfaces/IEventDao.php';
 require_once './Database.php';
 
-class EventDaoImpl implements EventDao {
+class EventDao implements IEventDao {
     
     public function deleteEvents($events) {
         if (is_null($events)) { return; }

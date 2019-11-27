@@ -1,9 +1,9 @@
 <?php
 
-require_once './interfaces/UserDao.php';
+require_once './interfaces/IUserDao.php';
 require_once './Database.php';
 
-class UserDaoImpl implements UserDao {
+class UserDao implements IUserDao {
     
     public function deleteUsers($users) {
         if (is_null($users)) { return; }

@@ -1,6 +1,6 @@
 <?php
 
-interface ParticipationDao {
+interface IParticipationDao {
     public function insertParticipations($participations);
     public function deleteParticipations($participations);
     public function updateParticipations($participations);

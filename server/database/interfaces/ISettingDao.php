@@ -1,6 +1,6 @@
 <?php
 
-interface SettingDao {
+interface ISettingDao {
     public function insertSettings($settings);
     public function deleteSettings($settings);
     public function upadteSettings($settings);

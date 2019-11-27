@@ -1,6 +1,6 @@
 <?php
 
-interface MessageDao {
+interface IMessageDao {
     public function insertMessages($messages);
     public function deleteMessages($messages);
     public function updateMessages($messages);
