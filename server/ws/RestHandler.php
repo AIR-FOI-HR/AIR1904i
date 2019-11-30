@@ -62,6 +62,11 @@ class RestHandler {
         return $jsonResponse;
     }
     
+    private function decodeJson($data) {
+        $rawData = json_decode($data);
+        return $rawData;
+    }
+    
     private function encodeHtml($data) {
         $htmlResponse = "<table border='5'>";
         $this->array2html($htmlResponse, $data);
@@ -69,10 +74,19 @@ class RestHandler {
         return $htmlResponse;
     }
     
+    private function decodeHtml($data) {
+        // Not implemented
+    }
+    
+    
     private function encodeXml($data) {
         $xmlResponse = new SimpleXMLElement('<root/>');
         $this->array2xml($xmlResponse, $data);
         return $xmlResponse->asXML();
+    }
+    
+    private function decodeXml($data) {
+        // Not implemented
     }
     
     private function array2xml($obj, $arr) {
@@ -115,6 +129,7 @@ class RestHandler {
         
         $this->setHttpHeaders($requestContentType, $statusCode);
         
+        $response = "";
         if (strpos($requestContentType, 'application/json') !== false) {
             $response = $this->encodeJson($data);
         } else if (strpos($requestContentType, 'text/html') !== false) {
@@ -123,5 +138,16 @@ class RestHandler {
             $response = $this->encodeXml($data);
         }
         return $response;
+    }
+    
+    public function unpackData($requestContentType, $data) {
+        if (strpos($requestContentType, 'application/json') !== false) {
+            $request = $this->decodeJson($data);
+        } else if (strpos($requestContentType, 'text/html') !== false) {
+            $request = $this->decodeHtml($data);
+        } else if(strpos($requestContentType, 'application/xml') !== false) {
+            $request = $this->decodeXml($data);
+        }
+        return $request;
     }
 }
