@@ -98,7 +98,7 @@ class RestController {
         return $data;
     }
 
-    public function loadEventData($args) {
+    private function loadEventData($args) {
         $dao = $this->db->getEventDao();
         $data = [];
         
@@ -117,7 +117,7 @@ class RestController {
         return $data;
     }
 
-    public function loadSportData($args) {
+    private function loadSportData($args) {
         $dao = $this->db->getSportDao();
         $data = [];
         
@@ -132,7 +132,7 @@ class RestController {
         return $data;
     }
 
-    public function loadSettingData($args) {
+    private function loadSettingData($args) {
         $dao = $this->db->getSettingDao();
         $data = [];
         
@@ -149,7 +149,7 @@ class RestController {
         return $data;
     }
 
-    public function loadApplicationData($args) {
+    private function loadApplicationData($args) {
         $dao = $this->db->getApplicationDao();
         $data = [];
         
@@ -166,7 +166,7 @@ class RestController {
         return $data;
     }
 
-    public function loadParticipationData($args) {
+    private function loadParticipationData($args) {
         $dao = $this->db->getParticipationDao();
         $data = [];
         
@@ -183,7 +183,7 @@ class RestController {
         return $data;
     }
 
-    public function loadChatData($args) {
+    private function loadChatData($args) {
         $dao = $this->db->getChatDao();
         $data = [];
         
@@ -198,7 +198,7 @@ class RestController {
         return $data;
     }
 
-    public function loadMessageData($args) {
+    private function loadMessageData($args) {
         $dao = $this->db->getMessageDao();
         $data = [];
         
@@ -217,4 +217,5 @@ class RestController {
         return $data;
     }
 
+    
 }
