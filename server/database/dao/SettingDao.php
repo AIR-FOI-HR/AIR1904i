@@ -30,7 +30,7 @@ class SettingDao implements ISettingDao {
         $db->closeConnection(); 
     }
 
-    public function getAllSettings($settings) {
+    public function getAllSettings() {
         $sql = "SELECT * FROM settings";
         
         $db = Database::getInstance();
