@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IParticipationDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Participation.php';
 
 class ParticipationDao implements IParticipationDao {
     
@@ -20,8 +21,7 @@ class ParticipationDao implements IParticipationDao {
         foreach ($participations as $p) {
             
             if (!($p instanceof Participation)) { 
-                $db->closeConnection();
-                return; 
+                $p = Participation::fromObject($p);
             }
             
             $playerId = $p->getPlayerId();
@@ -111,8 +111,7 @@ class ParticipationDao implements IParticipationDao {
         foreach ($participations as $p) {
             
             if (!($p instanceof Participation)) { 
-                $db->closeConnection();
-                return $ids; 
+                $p = Participation::fromObject($p);
             }
             
             $playerId = $p->getPlayerId();
@@ -150,8 +149,7 @@ class ParticipationDao implements IParticipationDao {
         foreach ($participations as $p) {
             
             if (!($p instanceof Participation)) { 
-                $db->closeConnection();
-                return; 
+                $p = Participation::fromObject($p);
             }
             
             $playerId = $p->getPlayerId();

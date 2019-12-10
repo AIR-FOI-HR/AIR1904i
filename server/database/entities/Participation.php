@@ -37,4 +37,22 @@ class Participation {
     public function setChatId($chatId): void {
         $this->chatId = $chatId;
     }
+    
+    public static function fromObject($obj) {
+        $participation = new Participation();
+        if (isset($obj->joinDate)) {
+            $participation->joinDate = $obj->joinDate;
+        }
+        if (isset($obj->playerId)) {
+            $participation->playerId = $obj->playerId;
+        }
+        if (isset($obj->eventId)) {
+            $participation->eventId = $obj->eventId;
+        }
+        if (isset($obj->chatId)) {
+            $participation->chatId = $obj->chatId;
+        }
+        return $participation;
+    }
+
 }

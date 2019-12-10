@@ -19,4 +19,15 @@ class Chat {
     public function setTitle($title): void {
         $this->title = $title;
     }
+    
+    public static function fromObject($obj) {
+        $chat = new Chat();
+        if (isset($obj->id)) {
+            $chat->id = $obj->id;
+        }
+        if (isset($obj->title)) {
+            $chat->title = $obj->title;
+        }
+        return $chat;
+    }
 }

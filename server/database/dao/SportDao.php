@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/ISportDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Sport.php';
 
 class SportDao implements ISportDao {
     
@@ -19,8 +20,7 @@ class SportDao implements ISportDao {
         foreach ($sports as $s) {
             
             if (!($s instanceof Sport)) { 
-                $db->closeConnection();
-                return; 
+                $s = Sport::fromObject($s);
             }
             
             $id = $s->getId();
@@ -96,8 +96,7 @@ class SportDao implements ISportDao {
         foreach ($sports as $s) {
             
             if (!($s instanceof Sport)) { 
-                $db->closeConnection();
-                return $ids; 
+                $s = Sport::fromObject($s);
             }
             
             $name = $s->getName();
@@ -136,8 +135,7 @@ class SportDao implements ISportDao {
         foreach ($sports as $s) {
             
             if (!($s instanceof Sport)) { 
-                $db->closeConnection();
-                return;
+                $s = Sport::fromObject($s);
             }
             
             $id = $s->getId();

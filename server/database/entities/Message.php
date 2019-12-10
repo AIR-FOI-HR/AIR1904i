@@ -46,4 +46,25 @@ class Message {
     public function setSenderId($senderId): void {
         $this->senderId = $senderId;
     }
+    
+    public static function fromObject($obj) {
+        $message = new Message();
+        if (isset($obj->id)) {
+            $message->id = $obj->id;
+        }
+        if (isset($obj->sendTime)) {
+            $message->sendTime = $obj->sendTime;
+        }
+        if (isset($obj->text)) {
+            $message->text = $obj->text;
+        }
+        if (isset($obj->chatId)) {
+            $message->chatId = $obj->chatId;
+        }
+        if (isset($obj->senderId)) {
+            $message->senderId = $obj->senderId;
+        }
+        return $message;
+    }
+
 }

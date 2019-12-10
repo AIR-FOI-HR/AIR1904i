@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/ISettingDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Setting.php';
 
 class SettingDao implements ISettingDao {
     
@@ -19,8 +20,7 @@ class SettingDao implements ISettingDao {
         foreach ($settigns as $s) {
             
             if (!($s instanceof Setting)) { 
-                $db->closeConnection();
-                return; 
+                $s = Setting::fromObject($s);
             }
             
             $id = $s->getId();
@@ -103,8 +103,7 @@ class SettingDao implements ISettingDao {
         foreach ($settings as $s) {
             
             if (!($s instanceof Setting)) { 
-                $db->closeConnection();
-                return $ids; 
+                $s = Setting::fromObject($s);
             }
             
             $key = $s->getKey();
@@ -140,8 +139,7 @@ class SettingDao implements ISettingDao {
         foreach ($settings as $s) {
             
             if (!($s instanceof Setting)) { 
-                $db->closeConnection();
-                return;
+                $s = Setting::fromObject($s);
             }
             
             $id = $s->getId();

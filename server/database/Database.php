@@ -18,7 +18,7 @@ class Database {
     private $port;
     private $conn;
     
-    private function Database() {
+    private function __construct() {
         $dbSettings = parse_ini_file(".database.ini");
         $this->dbName = $dbSettings["dbname"];
         $this->dbDriver = $dbSettings["driver"];

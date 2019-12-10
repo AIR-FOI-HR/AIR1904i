@@ -127,4 +127,52 @@ class User {
     public function setLatitude($latitude): void {
         $this->latitude = $latitude;
     }
+    
+    public static function fromObject($obj) {
+        $user = new User();
+        if (isset($obj->id)) {
+            $user->id = $obj->id;
+        }
+        if (isset($obj->email)) {
+            $user->email = $obj->email;
+        }
+        if (isset($obj->phoneNumber)) {
+            $user->phoneNumber = $obj->phoneNumber;
+        }
+        if (isset($obj->username)) {
+            $user->username = $obj->username;
+        }
+        if (isset($obj->password)) {
+            $user->password = $obj->password;
+        }
+        if (isset($obj->firstName)) {
+            $user->firstName = $obj->firstName;
+        }
+        if (isset($obj->lastName)) {
+            $user->lastName = $obj->lastName;
+        }
+        if (isset($obj->birthDate)) {
+            $user->birthDate = $obj->birthDate;
+        }
+        if (isset($obj->registerDate)) {
+            $user->registerDate = $obj->registerDate;
+        }
+        if (isset($obj->activationCode)) {
+            $user->activationCode = $obj->activationCode;
+        }
+        if (isset($obj->profileImg)) {
+            $user->profileImg = $obj->profileImg;
+        }
+        if (isset($obj->address)) {
+            $user->address = $obj->address;
+        }
+        if (isset($obj->lognitude)) {
+            $user->lognitude = $obj->lognitude;
+        }
+        if (isset($obj->latitude)) {
+            $user->latitude = $obj->latitude;
+        }
+        return $user;
+    }
+
 }

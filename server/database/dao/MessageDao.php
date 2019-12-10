@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IMessageDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Message.php';
 
 class MessageDao implements IMessageDao {
     
@@ -19,8 +20,7 @@ class MessageDao implements IMessageDao {
         foreach ($messages as $m) {
             
             if (!($m instanceof Message)) { 
-                $db->closeConnection();
-                return; 
+                $m = Message::fromObject($m);
             }
             
             $id = $m->getId();
@@ -133,8 +133,7 @@ class MessageDao implements IMessageDao {
         foreach ($messages as $m) {
             
             if (!($m instanceof Message)) { 
-                $db->closeConnection();
-                return $ids; 
+                $m = Message::fromObject($m);
             }
             
             $sendTime = $m->getSendTime();
@@ -173,8 +172,7 @@ class MessageDao implements IMessageDao {
         foreach ($messages as $m) {
             
             if (!($m instanceof Message)) { 
-                $db->closeConnection();
-                return;
+                $m = Message::fromObject($m);
             }
             
             $id = $m->getId();

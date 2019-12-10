@@ -91,4 +91,40 @@ class Event {
     public function setSportId($sportId): void {
         $this->sportId = $sportId;
     }
+    
+    public static function fromObject($obj) {
+        $event = new Event();
+        if (isset($obj->id)) {
+            $event->id = $obj->id;
+        }
+        if (isset($obj->title)) {
+            $event->title = $obj->title;
+        }
+        if (isset($obj->description)) {
+            $event->description = $obj->description;
+        }
+        if (isset($obj->creationDate)) {
+            $event->creationDate = $obj->creationDate;
+        }
+        if (isset($obj->locationLon)) {
+            $event->locationLon = $obj->locationLon;
+        }
+        if (isset($obj->locationLat)) {
+            $event->locationLat = $obj->locationLat;
+        }
+        if (isset($obj->locationAddr)) {
+            $event->locationAddr = $obj->locationAddr;
+        }
+        if (isset($obj->startTime)) {
+            $event->startTime = $obj->startTime;
+        }
+        if (isset($obj->creatorId)) {
+            $event->creatorId = $obj->creatorId;
+        }
+        if (isset($obj->sportId)) {
+            $event->sportId = $obj->sportId;
+        }
+        return $event;
+    }
+
 }

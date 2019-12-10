@@ -46,4 +46,25 @@ class Sport {
     public function setMaxPlayers($maxPlayers): void {
         $this->maxPlayers = $maxPlayers;
     }
+    
+    public static function fromObject($obj) {
+        $sport = new Sport();
+        if (isset($obj->id)) {
+            $sport->id = $obj->id;
+        }
+        if (isset($obj->name)) {
+            $sport->name = $obj->name;
+        }
+        if (isset($obj->description)) {
+            $sport->description = $obj->description;
+        }
+        if (isset($obj->minPlayers)) {
+            $sport->minPlayers = $obj->minPlayers;
+        }
+        if (isset($obj->maxPlayers)) {
+            $sport->maxPlayers = $obj->maxPlayers;
+        }
+        return $sport;
+    }
+
 }

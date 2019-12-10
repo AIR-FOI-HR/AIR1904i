@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IUserDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/User.php';
 
 class UserDao implements IUserDao {
     
@@ -19,8 +20,7 @@ class UserDao implements IUserDao {
         foreach ($users as $u) {
             
             if (!($u instanceof User)) { 
-                $db->closeConnection();
-                return; 
+                $u = User::fromObject($u);
             }
             
             $id = $u->getId();
@@ -164,8 +164,7 @@ class UserDao implements IUserDao {
         foreach ($users as $u) {
             
             if (!($u instanceof User)) { 
-                $db->closeConnection();
-                return $ids; 
+                $u = User::fromObject($u);
             }
             
             $email = $u->getEmail();
@@ -232,8 +231,7 @@ class UserDao implements IUserDao {
         foreach ($users as $u) {
             
             if (!($u instanceof User)) { 
-                $db->closeConnection();
-                return; 
+                $u = User::fromObject($u);
             }
             
             $id = $u->getId();

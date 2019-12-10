@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IChatDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Chat.php';
 
 class ChatDao implements IChatDao {
     
@@ -19,8 +20,7 @@ class ChatDao implements IChatDao {
         foreach ($chats as $c) {
             
             if (!($c instanceof Chat)) { 
-                $db->closeConnection();
-                return; 
+                $c = Chat::fromObject($c);
             }
             
             $id = $c->getId();
@@ -82,8 +82,7 @@ class ChatDao implements IChatDao {
         foreach ($chats as $c) {
             
             if (!($c instanceof Chat)) { 
-                $db->closeConnection();
-                return $ids; 
+                $c = Chat::fromObject($c);
             }
             
             $title = $c->getTitle();
@@ -111,8 +110,7 @@ class ChatDao implements IChatDao {
         foreach ($chats as $c) {
             
             if (!($c instanceof Chat)) { 
-                $db->closeConnection();
-                return;
+                $c = Chat::fromObject($c);
             }
             
             $id = $c->getId();

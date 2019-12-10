@@ -37,4 +37,22 @@ class Setting {
     public function setUserId($userId): void {
         $this->userId = $userId;
     }
+    
+    public static function fromObject($obj) {
+        $setting = new Setting();
+        if (isset($obj->id)) {
+            $setting->id = $obj->id;
+        }
+        if (isset($obj->key)) {
+            $setting->key = $obj->key;
+        }
+        if (isset($obj->value)) {
+            $setting->value = $obj->value;
+        }
+        if (isset($obj->userId)) {
+            $setting->userId = $obj->userId;
+        }
+        return $setting;
+    }
+
 }

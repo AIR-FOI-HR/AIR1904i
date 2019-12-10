@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IApplicationDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Application.php';
 
 class ApplicationDao implements IApplicationDao {
     
@@ -20,8 +21,7 @@ class ApplicationDao implements IApplicationDao {
         foreach ($applications as $a) {
             
             if (!($a instanceof Application)) { 
-                $db->closeConnection();
-                return; 
+                $a = Application::fromObject($a); 
             }
             
             $playerId = $a->getPlayerId();
@@ -108,8 +108,7 @@ class ApplicationDao implements IApplicationDao {
         foreach ($applications as $a) {
             
             if (!($a instanceof Application)) { 
-                $db->closeConnection();
-                return $ids; 
+                $a = Application::fromObject($a); 
             }
             
             $playerId = $a->getPlayerId();
@@ -140,8 +139,7 @@ class ApplicationDao implements IApplicationDao {
         foreach ($applications as $a) {
             
             if (!($a instanceof Application)) { 
-                $db->closeConnection();
-                return; 
+                $a = Application::fromObject($a); 
             }
             
             $playerId = $a->getPlayerId();

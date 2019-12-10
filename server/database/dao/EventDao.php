@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../interfaces/IEventDao.php';
 require_once __DIR__.'/../Database.php';
+require_once __DIR__.'/../entities/Event.php';
 
 class EventDao implements IEventDao {
     
@@ -19,8 +20,7 @@ class EventDao implements IEventDao {
         foreach ($events as $e) {
             
             if (!($e instanceof Event)) { 
-                $db->closeConnection();
-                return; 
+                $e = Event::fromObject($e);
             }
             
             $id = $e->getId();
@@ -149,8 +149,7 @@ class EventDao implements IEventDao {
         foreach ($events as $e) {
             
             if (!($e instanceof Event)) { 
-                $db->closeConnection();
-                return $ids; 
+                $e = Event::fromObject($e);
             }
             
             $title = $e->getTitle();
@@ -205,8 +204,7 @@ class EventDao implements IEventDao {
         foreach ($events as $e) {
             
             if (!($e instanceof Event)) { 
-                $db->closeConnection();
-                return; 
+                $e = Event::fromObject($e);
             }
             
             $id = $e->getId();
