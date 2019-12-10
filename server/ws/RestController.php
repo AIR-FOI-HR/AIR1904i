@@ -15,16 +15,16 @@ class RestController {
 
     public function getData() {
         $request = $this->processRequest();
-        //var_dump($request); //DEBUG
+        var_dump($request); //DEBUG
         $data = [];
         switch($request["method"]) {
             case "GET": $data = $this->loadData($request); break;
-            case "POST": // Drop through
-            case "PUT": $data = $this->insertData($request); break;
+            case "POST": $data = $this->postData($request); break;
             case "DELETE": $data = $this->deleteData($request); break;
             default: $data = ["error" => "Invalid method"];
         }
         
+        // TODO fix "application/" part
         $packedData = $this->restHandler->packData("application/".$request["format"], $data);
         return $packedData;
     }
@@ -46,7 +46,7 @@ class RestController {
 
     private function loadData($request) {
         $data = [];
-        $fn = null;
+
         switch($request["entity"]) {
             case "users": 
                 $data = $this->loadUserData($request["args"]);
@@ -217,5 +217,84 @@ class RestController {
         return $data;
     }
 
-    
+    private function postData($request) {
+        $data = [];
+
+        switch($request["entity"]) {
+            case "users": 
+                $data = $this->postUserData($request["args"]);
+                break;
+            case "events": 
+                $data = $this->postEventData($request["args"]);
+                break;
+            case "sports": 
+                $data = $this->postSportData($request["args"]);
+                break;
+            case "settings": 
+                $data = $this->postSettingData($request["args"]);
+                break;
+            case "applications": 
+                $data = $this->postApplicationData($request["args"]);
+                break;
+            case "participations": 
+                $data = $this->postParticipationData($request["args"]);
+                break;
+            case "chats": 
+                $data = $this->postChatData($request["args"]);
+                break;
+            case "messages": 
+                $data = $this->postMessageData($request["args"]);
+                break;
+            default:
+                $data = ["error" => "Entity does not exist"]; 
+                break;
+        }
+        return $data;
+    }
+
+    private function postUserData($args) {
+        $dao = $this->db->getUserDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if (isset($args[0]->id)) { //TODO better check if user already exists
+                try { $data = $dao->updateUsers($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                try { $data = $dao->insertUsers($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            }
+        }
+        return $data;
+    }
+
+    private function postEventData($args) {
+        
+    }
+
+    private function postSportData($args) {
+        
+    }
+
+    private function postSettingData($args) {
+        
+    }
+
+    private function postApplicationData($args) {
+        
+    }
+
+    private function postParticipationData($args) {
+        
+    }
+
+    private function postChatData($args) {
+        
+    }
+
+    private function postMessageData($args) {
+        
+    }
+
 }
