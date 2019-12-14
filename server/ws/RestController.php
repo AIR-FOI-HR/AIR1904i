@@ -39,7 +39,7 @@ class RestController {
         } else {
             switch($reqMethod) {
                 case "GET": $reqAction="list"; break;
-                case "POST": $reqAction="add"; break;
+                case "POST": $reqAction="insert"; break;
                 case "DELETE": $reqAction="delete"; break;
             }
         }
@@ -273,7 +273,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateUsers($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertUsers($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -292,7 +292,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateEvents($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertEvents($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -312,7 +312,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateSports($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertSports($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -331,7 +331,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateSettings($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertSettings($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -350,7 +350,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateApplications($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertApplications($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -369,7 +369,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateParticipations($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertParticipations($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -388,7 +388,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateChats($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertChats($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -407,7 +407,7 @@ class RestController {
             if ($action == "update") {
                 try { $data = $dao->updateMessages($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else if ($action == "add") {
+            } else if ($action == "insert") {
                 try { $data = $dao->insertMessages($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
             } else {
@@ -416,4 +416,128 @@ class RestController {
         }
         return $data;
     }
+
+    private function deleteData($request) {
+        $data = [];
+
+        switch($request["entity"]) {
+            case "users": 
+                $data = $this->deleteUserData($request["args"]);
+                break;
+            case "events": 
+                $data = $this->deleteEventData($request["args"]);
+                break;
+            case "sports": 
+                $data = $this->deleteSportData($request["args"]);
+                break;
+            case "settings": 
+                $data = $this->deleteSettingData($request["args"]);
+                break;
+            case "applications": 
+                $data = $this->deleteApplicationData($request["args"]);
+                break;
+            case "participations": 
+                $data = $this->deleteParticipationData($request["args"]);
+                break;
+            case "chats": 
+                $data = $this->deleteChatData($request["args"]);
+                break;
+            case "messages": 
+                $data = $this->deleteMessageData($request["args"]);
+                break;
+            default:
+                $data = ["error" => "Entity does not exist"]; 
+                break;
+        }
+        return $data;
+    }
+
+    public function deleteUserData($args) {
+        $dao = $this->db->getUserDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteUsers($args);
+        }
+        return $data;
+    }
+
+    public function deleteEventData($args) {
+        $dao = $this->db->getEventDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteEvents($args);
+        }
+        return $data;
+    }
+
+    public function deleteSportData($args) {
+        $dao = $this->db->getSportDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteSports($args);
+        }
+        return $data;
+    }
+
+    public function deleteSettingData($args) {
+        $dao = $this->db->getSettingDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteSettings($args);
+        }
+        return $data;
+    }
+
+    public function deleteApplicationData($args) {
+        $dao = $this->db->getApplicationDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteApplications($args);
+        }
+        return $data;
+    }
+
+    public function deleteParticipationData($args) {
+        $dao = $this->db->getParticipationDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteParticipations($args);
+        }
+        return $data;
+    }
+
+    public function deleteChatData($args) {
+        $dao = $this->db->getChatDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteChats($args);
+        }
+        return $data;
+    }
+
+    public function deleteMessageData($args) {
+        $dao = $this->db->getMessageDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            $data = $dao->deleteMessages($args);
+        }
+        return $data;
+    }
+
 }
