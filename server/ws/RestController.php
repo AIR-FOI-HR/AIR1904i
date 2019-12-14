@@ -258,43 +258,159 @@ class RestController {
         if (empty($args)) {
             $data = ["error" => "Missing arguments"];
         } else {
-            if (isset($args[0]->id)) { //TODO better check if user already exists
+            if ($this->entriesExist($args, "users") == 1) {
                 try { $data = $dao->updateUsers($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
-            } else {
+            } else if ($this->entriesExist($args, "users") == 0) {
                 try { $data = $dao->insertUsers($args); }
                 catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
             }
         }
         return $data;
     }
 
     private function postEventData($args) {
+        $dao = $this->db->getEventDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "events") == 1) {
+                try { $data = $dao->updateEvents($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "events") == 0) {
+                try { $data = $dao->insertEvents($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
         
     }
 
     private function postSportData($args) {
-        
+        $dao = $this->db->getSportDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "sports") == 1) {
+                try { $data = $dao->updateSports($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "sports") == 0) {
+                try { $data = $dao->insertSports($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
     }
 
     private function postSettingData($args) {
-        
+        $dao = $this->db->getSettingDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "settings") == 1) {
+                try { $data = $dao->updateSettings($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "settings") == 0) {
+                try { $data = $dao->insertSettings($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
     }
 
     private function postApplicationData($args) {
-        
+        $dao = $this->db->getApplicationDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "applications") == 1) {
+                try { $data = $dao->updateApplications($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "applications") == 0) {
+                try { $data = $dao->insertApplications($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
     }
 
     private function postParticipationData($args) {
-        
+        $dao = $this->db->getParticipationDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "participations") == 1) {
+                try { $data = $dao->updateParticipations($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "participations") == 0) {
+                try { $data = $dao->insertParticipations($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
     }
 
     private function postChatData($args) {
-        
+        $dao = $this->db->getChatDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "chats") == 1) {
+                try { $data = $dao->updateChats($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "chats") == 0) {
+                try { $data = $dao->insertChats($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
     }
 
     private function postMessageData($args) {
-        
+        $dao = $this->db->getMessageDao();
+        $data = [];
+        if (empty($args)) {
+            $data = ["error" => "Missing arguments"];
+        } else {
+            if ($this->entriesExist($args, "messages") == 1) {
+                try { $data = $dao->updateMessages($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else if ($this->entriesExist($args, "messages") == 0) {
+                try { $data = $dao->insertMessages($args); }
+                catch (PDOException $ex) { $data = ["error" => "Invalid arguments"]; }
+            } else {
+                $data = ["error" => "Some entries conflict with those already in database"];
+            }
+        }
+        return $data;
+    }
+    
+    /* returns 1 if all entries exist
+     * returns 0 if none of entries exist
+     * returns -1 if some entries exist and some do not */
+    private function entriesExist($args, $table) {
+        // TODO implement check
+        return 1;
     }
 
 }
