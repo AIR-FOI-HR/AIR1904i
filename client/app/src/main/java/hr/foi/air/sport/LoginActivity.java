@@ -16,8 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.webservice.ISportifyApiResponseHandler;
 import com.example.webservice.SportifyApiCaller;
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.air.database.entities.User;
 import hr.foi.air.database.repositories.UsersRepository;
 
 /**
@@ -82,6 +85,6 @@ public class LoginActivity extends AppCompatActivity implements ISportifyApiResp
 
     @Override
     public void onResponseReceived(Object response) {
-        String username = this.usernameEdit.getText().toString().trim();
+        List<User> users = (List<User>)response;
     }
 }

@@ -1,13 +1,15 @@
 package com.example.webservice;
 
 public class SportifyApiResponse {
-    public String Content;
+    public String content;
+
+    public SportifyApiResponse(){}
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        content = content;
     }
 }

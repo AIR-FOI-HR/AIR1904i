@@ -2,9 +2,13 @@ package com.example.webservice;
 
 import com.example.model.User;
 import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Protocol;
+import com.squareup.okhttp.ResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,5 +64,6 @@ public class SportifyApiCaller {
 
     private void handleGetUsers(Response<List<User>> response){
         List<User> users = response.body();
+        this.sportifyApiResponseHandler.onResponseReceived(users);
     }
 }
