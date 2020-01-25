@@ -2,13 +2,8 @@ package com.example.webservice;
 
 import com.example.model.User;
 import com.google.gson.Gson;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Protocol;
-import com.squareup.okhttp.ResponseBody;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,6 +11,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * The type Sportify api caller.
+ */
 public class SportifyApiCaller {
 
     private Retrofit retrofit;
@@ -24,6 +22,11 @@ public class SportifyApiCaller {
     private String sportifyApiUrl = "http://sportifyair.000webhostapp.com/";
     private Gson gson;
 
+    /**
+     * Instantiates a new Sportify api caller.
+     *
+     * @param sportifyApiResponseHandler the sportify api response handler
+     */
     public SportifyApiCaller(ISportifyApiResponseHandler sportifyApiResponseHandler){
         this.sportifyApiResponseHandler = sportifyApiResponseHandler;
         this.gson = new Gson();
@@ -35,6 +38,9 @@ public class SportifyApiCaller {
         this.sportifyApi = this.retrofit.create(ISportifyApi.class);
     }
 
+    /**
+     * Get users.
+     */
     public void GetUsers(){
         Call<List<User>> call = this.sportifyApi.getUsers();
         this.requestApiData(call, SportifyApiActions.GetUsers);
