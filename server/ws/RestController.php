@@ -15,12 +15,12 @@ class RestController {
 
     public function getData() {
         $request = $this->processRequest();
-        var_dump($request); //DEBUG
+        //var_dump($request); //DEBUG
         $data = [];
         switch($request["method"]) {
-            case "GET": $data = $this->loadData($request); break;
-            case "POST": $data = $this->postData($request); break;
-            case "DELETE": $data = $this->deleteData($request); break;
+            case "GET": $data = ["content" => $this->loadData($request)]; break;
+            case "POST": $data = ["content" => $this->postData($request)]; break;
+            case "DELETE": $data = ["content" => $this->deleteData($request)]; break;
             default: $data = ["error" => "Invalid method"];
         }
         
