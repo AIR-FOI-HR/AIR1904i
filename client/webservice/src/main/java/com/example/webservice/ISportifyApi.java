@@ -17,6 +17,6 @@ public interface ISportifyApi {
      *
      * @return the users
      */
-    @GET("users/list/")
+    @GET("server/users/list/")
     Call<List<User>> getUsers();
 }

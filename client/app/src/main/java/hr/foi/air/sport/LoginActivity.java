@@ -14,9 +14,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.business.LoginService;
+import com.example.webservice.ISportifyApiResponseHandler;
+import com.example.webservice.SportifyApiCaller;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.air.database.entities.User;
 import hr.foi.air.database.repositories.UsersRepository;
 import hr.foi.air.sport.viewModelServices.ILoginVmService;
 import hr.foi.air.sport.viewModelServices.LoginVmService;
@@ -24,13 +27,14 @@ import hr.foi.air.sport.viewModelServices.LoginVmService;
 /**
  * The type Login activity.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ISportifyApiResponseHandler {
 
     private ILoginVmService loginVmService;
     private Button signInButton;
     private EditText usernameEdit;
     private EditText passwordEdit;
     private TextView textView;
+    private SportifyApiCaller sportifyApiCaller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         this.initializeComponents();
         this.makeTextClickable();
 
+        this.sportifyApiCaller = new SportifyApiCaller(this);
     }
 
     private void initializeComponents(){
@@ -79,10 +84,11 @@ public class LoginActivity extends AppCompatActivity {
         String username = this.usernameEdit.getText().toString().trim();
         String password = this.passwordEdit.getText().toString().trim();
 
-        boolean isUserLoggedIn = this.loginVmService.LoginUser(username, password);
+        this.sportifyApiCaller.GetUsers();
+    }
 
-        if(isUserLoggedIn) {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        }
+    @Override
+    public void onResponseReceived(Object response) {
+        String username = this.usernameEdit.getText().toString().trim();
     }
 }
