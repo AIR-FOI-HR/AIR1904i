@@ -13,23 +13,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.business.LoginService;
 import com.example.webservice.ISportifyApiResponseHandler;
 import com.example.webservice.SportifyApiCaller;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hr.foi.air.database.entities.User;
 import hr.foi.air.database.repositories.UsersRepository;
-import hr.foi.air.sport.viewModelServices.ILoginVmService;
-import hr.foi.air.sport.viewModelServices.LoginVmService;
 
 /**
  * The type Login activity.
  */
 public class LoginActivity extends AppCompatActivity implements ISportifyApiResponseHandler {
 
-    private ILoginVmService loginVmService;
     private Button signInButton;
     private EditText usernameEdit;
     private EditText passwordEdit;
@@ -50,9 +45,7 @@ public class LoginActivity extends AppCompatActivity implements ISportifyApiResp
 
     private void initializeComponents(){
         UsersRepository usersRepository = new UsersRepository();
-        LoginService loginService = new LoginService(usersRepository);
 
-        this.loginVmService = new LoginVmService(loginService);
         this.signInButton = this.findViewById(R.id.signInButton);
         this.usernameEdit = this.findViewById(R.id.usernameEdit);
         this.passwordEdit = this.findViewById(R.id.passwordEdit);

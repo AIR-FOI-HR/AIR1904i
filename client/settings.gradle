@@ -1,2 +1,2 @@
-include ':app', ':database', ':business', ':model', ':webservice'
+include ':app', ':database', ':model', ':webservice'
 rootProject.name='Sport'
