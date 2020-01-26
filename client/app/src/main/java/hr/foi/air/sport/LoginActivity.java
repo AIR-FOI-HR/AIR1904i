@@ -21,7 +21,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.database.entities.User;
-import hr.foi.air.database.repositories.UsersRepository;
 
 /**
  * The type Login activity.
@@ -47,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements ISportifyApiResp
     }
 
     private void initializeComponents(){
-        UsersRepository usersRepository = new UsersRepository();
 
         this.signInButton = this.findViewById(R.id.signInButton);
         this.usernameEdit = this.findViewById(R.id.usernameEdit);
@@ -77,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements ISportifyApiResp
      */
     @OnClick(R.id.signInButton)
     public void OnSignInButtonClick(View v){
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         String username = this.usernameEdit.getText().toString().trim();
         String password = this.passwordEdit.getText().toString().trim();
 
